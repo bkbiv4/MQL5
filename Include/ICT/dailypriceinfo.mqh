@@ -27,7 +27,7 @@
 //+------------------------------------------------------------------+
 
 MqlRates dailyPriceArray[];
-
+datetime dailyOpenTime;
 
 
 void drawDailyValues(void) {
@@ -36,7 +36,7 @@ void drawDailyValues(void) {
      double dailyOpenPrice = dailyPriceArray[0].open;
      double dailyHighPrice = dailyPriceArray[0].high;
      double dailyLowPrice = dailyPriceArray[0].low;
-     datetime dailyOpenTime = dailyPriceArray[0].time;
+     dailyOpenTime = dailyPriceArray[0].time;
    
      ObjectCreate(0, "dailyHigh", OBJ_TREND, 0, dailyOpenTime, dailyHighPrice, dailyOpenTime + 86400, dailyHighPrice);
      ObjectCreate(0, "dailyLow", OBJ_TREND, 0, dailyOpenTime, dailyLowPrice, dailyOpenTime + 86400, dailyLowPrice);
