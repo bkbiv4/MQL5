@@ -1,3 +1,4 @@
+//###<Experts/ICT.mq5>
 //+------------------------------------------------------------------+
 //|                                             sessionpriceinfo.mqh |
 //|                                  Copyright 2024, MetaQuotes Ltd. |
@@ -30,15 +31,16 @@ input bool drawSessionBoxes = true;
 //+------------------------------------------------------------------+
 datetime asianOpenTime, asianCloseTime, newyorkOpenTime, newyorkCloseTime, londonOpenTime, londonCloseTime;
 double asianLow, asianHigh, londonLow, londonHigh, newyorkLow, newyorkHigh;
+double asianOpenPrice, asianClosePrice, londonOpenPrice, londonClosePrice, newyorkOpenPrice, newyorkClosePrice;
 MqlRates asianPriceArray[], newyorkPriceArray[], londonPriceArray[]; 
 
 
 void setSessionTimes() {
-     asianOpenTime = dailyPriceArray[0].time + 10800;
+     asianOpenTime = dailyOpenTime + 10800;
      asianCloseTime = asianOpenTime + 32400;
-     londonOpenTime = dailyPriceArray[0].time + 36000;
+     londonOpenTime = dailyOpenTime + 36000;
      londonCloseTime = londonOpenTime + 32400;
-     newyorkOpenTime = dailyPriceArray[0].time + 54000;
+     newyorkOpenTime = dailyOpenTime + 54000;
      newyorkCloseTime = newyorkOpenTime + 32400;
 }
      
@@ -64,11 +66,24 @@ void drawAsianSession() {
      
      asianHigh = asianPriceArray[asianHighPrice].high;
      asianLow = asianPriceArray[asianLowPrice].low;
+
+     getHourlyPriceData();
+
+     for(ulong i = 0; i < hourlyPriceArray.Size(); i++) {
+          if (hourlyPriceArray[i].time == asianOpenTime) {
+               asianOpenPrice = hourlyPriceArray[i].open;
+          }
+     }
+
+     ObjectCreate(0, "asianOpenPrice", OBJ_TREND, 0, asianOpenTime, asianOpenPrice, asianCloseTime, asianOpenPrice);
+     ObjectSetInteger(0, "asianOpenPrice",OBJPROP_COLOR, C'177,0,177');
+     ObjectSetInteger(0, "asianOpenPrice", OBJPROP_STYLE, STYLE_DASH);
      
      ObjectCreate(0, "asianBox", OBJ_RECTANGLE, 0, asianOpenTime, asianPriceArray[asianLowPrice].low, asianCloseTime, asianPriceArray[asianHighPrice].high);
      ObjectSetInteger(0, "asianBox",OBJPROP_BACK, true);
      ObjectSetInteger(0, "asianBox",OBJPROP_COLOR, C'177,0,177');
      ObjectSetInteger(0, "asianBox",OBJPROP_FILL, false);
+     ObjectSetInteger(0, "asianBox", OBJPROP_STYLE, STYLE_DASH);
 
      ObjectCreate(0, "asianSessionText", OBJ_TEXT, 0, asianOpenTime, asianHigh);
      ObjectSetString(0, "asianSessionText", OBJPROP_TEXT, "Asian Session");
@@ -95,16 +110,27 @@ void drawLondonSession() {
      
      int londonHighPrice = ArrayMaximum(londonHighPrices, 0);
      int londonLowPrice = ArrayMinimum(londonLowPrices, 0);
-
-     Print(londonHighPrice);
      
      londonHigh = londonPriceArray[londonHighPrice].high;
      londonLow = londonPriceArray[londonLowPrice].low;
+
+     getHourlyPriceData();
+
+     for(ulong i = 0; i < hourlyPriceArray.Size(); i++) {
+          if (hourlyPriceArray[i].time == londonOpenTime) {
+               londonOpenPrice = hourlyPriceArray[i].open;
+          }
+     }
+
+     ObjectCreate(0, "londonOpenPrice", OBJ_TREND, 0, londonOpenTime, londonOpenPrice, londonCloseTime, londonOpenPrice);
+     ObjectSetInteger(0, "londonOpenPrice",OBJPROP_COLOR,  C'105,105,255');
+     ObjectSetInteger(0, "londonOpenPrice", OBJPROP_STYLE, STYLE_DASH);
      
      ObjectCreate(0, "londonBox", OBJ_RECTANGLE, 0, londonOpenTime, londonPriceArray[londonLowPrice].low, londonCloseTime, londonPriceArray[londonHighPrice].high);
      ObjectSetInteger(0, "londonBox",OBJPROP_BACK, true);   
      ObjectSetInteger(0, "londonBox",OBJPROP_COLOR, C'105,105,255');
      ObjectSetInteger(0, "londonBox",OBJPROP_FILL, false);
+     ObjectSetInteger(0, "londonBox", OBJPROP_STYLE, STYLE_DASH);
 
      ObjectCreate(0, "londonSessionText", OBJ_TEXT, 0, londonOpenTime, londonHigh);
      ObjectSetString(0, "londonSessionText", OBJPROP_TEXT, "London Session");
@@ -134,11 +160,24 @@ void drawNewYorkSession() {
      
      newyorkHigh = newyorkPriceArray[newyorkHighPrice].high;
      newyorkLow = newyorkPriceArray[newyorkLowPrice].low;
+
+     getHourlyPriceData();
+
+     for(ulong i = 0; i < hourlyPriceArray.Size(); i++) {
+          if (hourlyPriceArray[i].time == newyorkOpenTime) {
+               newyorkOpenPrice = hourlyPriceArray[i].open;
+          }
+     }
+
+     ObjectCreate(0, "newyorkOpenPrice", OBJ_TREND, 0, newyorkOpenTime, newyorkOpenPrice, newyorkCloseTime, newyorkOpenPrice);
+     ObjectSetInteger(0, "newyorkOpenPrice",OBJPROP_COLOR, clrSpringGreen);
+     ObjectSetInteger(0, "newyorkOpenPrice", OBJPROP_STYLE, STYLE_DASH);
      
      ObjectCreate(0, "newyorkBox", OBJ_RECTANGLE, 0, newyorkOpenTime, newyorkPriceArray[newyorkLowPrice].low, newyorkCloseTime, newyorkPriceArray[newyorkHighPrice].high);
      ObjectSetInteger(0, "newyorkBox",OBJPROP_BACK, true);
      ObjectSetInteger(0, "newyorkBox",OBJPROP_COLOR, clrSpringGreen);
      ObjectSetInteger(0, "newyorkBox",OBJPROP_FILL, false);
+     ObjectSetInteger(0, "newyorkBox", OBJPROP_STYLE, STYLE_DASH);
 
      ObjectCreate(0, "newyorkSessionText", OBJ_TEXT, 0, newyorkOpenTime, newyorkHigh);
      ObjectSetString(0, "newyorkSessionText", OBJPROP_TEXT, "New York Session");

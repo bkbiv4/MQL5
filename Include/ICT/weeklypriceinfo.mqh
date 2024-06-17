@@ -1,3 +1,4 @@
+//###<Experts/ICT.mq5>
 //+------------------------------------------------------------------+
 //|                                              weeklypriceinfo.mqh |
 //|                                  Copyright 2024, MetaQuotes Ltd. |
@@ -38,7 +39,7 @@ void drawWeeklyValues(void) {
      
 	ObjectCreate(0, "weeklyOpen", OBJ_TREND, 0, weeklyPriceArray[0].time + 86400, weeklyOpenPrice, weeklyPriceArray[0].time + 518400, weeklyOpenPrice);
 	ObjectSetInteger(0, "weeklyOpen",OBJPROP_COLOR, clrPurple);
-	
+
 	ObjectCreate(0, "weeklyLow", OBJ_TREND, 0, weeklyPriceArray[0].time + 86400, weeklyLowPrice, weeklyPriceArray[0].time + 518400, weeklyLowPrice);
 	ObjectCreate(0, "weeklyHigh", OBJ_TREND, 0, weeklyPriceArray[0].time + 86400, weeklyHighPrice, weeklyPriceArray[0].time + 518400, weeklyHighPrice);
      

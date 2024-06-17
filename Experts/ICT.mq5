@@ -11,6 +11,7 @@
 #include "../Include/ICT/weeklypriceinfo.mqh"
 #include "../Include/ICT/sessionpriceinfo.mqh"
 #include "../Include/ICT/ictkillzones.mqh"
+#include "../Include/ICT/ictjudasswing.mqh"
 
 #property indicator_chart_window
 #property indicator_buffers 1
@@ -23,14 +24,15 @@
 #property indicator_width1  1
      
 void OnTick(void) {
-   drawDailyValues();
-   drawWeeklyValues();
-   setSessionTimes();
-   
-   if (drawSessionBoxes) {
+     drawDailyValues();
+     //drawWeeklyValues();
+     setSessionTimes();
+     
+     if (drawSessionBoxes) {
           //drawSessionsRegular();
           drawSessions();
      }
+     judasSwing();
 }
 //     
 void drawSessionsRegular() {
@@ -71,23 +73,23 @@ void drawSessionsRegular() {
 
 void drawSessions() {
    if (TimeCurrent() > newyorkOpenTime) {
-      Print("1st");
+     //  Print("1st");
       drawAsianSession();
       drawLondonSession();
       drawNewYorkSession();
    }
    else if (TimeCurrent() > londonOpenTime) {
-      Print("2nd");
+     //  Print("2nd");
       drawAsianSession();
       drawLondonSession();
    }
    else if (TimeCurrent() > asianOpenTime) {
-      Print("3rd");
+     //  Print("3rd");
       drawAsianSession();
   
    }
    else {
-      Print("4th");
+     //  Print("4th");
    }
 }
 

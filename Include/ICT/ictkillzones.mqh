@@ -1,3 +1,4 @@
+//###<Experts/ICT.mq5>
 //+------------------------------------------------------------------+
 //|                                                 ictkillzones.mqh |
 //|                                  Copyright 2024, MetaQuotes Ltd. |
@@ -8,16 +9,14 @@
 
 #include "sessionpriceinfo.mqh"
 #include "dailypriceinfo.mqh"
+#include "hourlypriceinfo.mqh"
 
-MqlRates hourlyPriceArray[];
+
 void ictKillzones() {
-    ArraySetAsSeries(hourlyPriceArray, true);
-    int hourlyData = CopyRates(_Symbol, PERIOD_H1, 0, 240, hourlyPriceArray); 
 
-    /// MARK: - Judas Swing Values
-    datetime judasOpenTime = dailyOpenTime + 25200;
-    ObjectCreate(0,"judasOpenLine", OBJ_VLINE, 0, judasOpenTime, 0.0);
-    ObjectSetInteger(0, "judasOpenLine", OBJPROP_COLOR, clrAzure);
+    getHourlyPriceData(); 
+
+    
 
     datetime ictNewYorkOpenTime = newyorkOpenTime - 3600;
     datetime ictNewYorkCloseTime = ictNewYorkOpenTime + 7200;
