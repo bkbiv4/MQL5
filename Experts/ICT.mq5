@@ -7,9 +7,9 @@
 #property link      "[https://www.mql5.com](https://www.mql5.com/)"
 #property version   "1.00"
 
-#include "../../Include/dailypriceinfo.mqh"
-#include "../../Include/weeklypriceinfo.mqh"
-#include "../../Include/sessionpriceinfo.mqh"
+#include "../Include/ICT/dailypriceinfo.mqh"
+#include "../Include/ICT/weeklypriceinfo.mqh"
+#include "../Include/ICT/sessionpriceinfo.mqh"
      
 void OnTick(void) {
    drawDailyValues();
