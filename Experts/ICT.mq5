@@ -17,19 +17,18 @@ void OnTick(void) {
    setSessionTimes();
    
    if (drawSessionBoxes) {
+          //drawSessionsRegular();
           drawSessions();
      }
 }
 //     
-void drawSessions() {
+void drawSessionsRegular() {
      if (TimeCurrent() > newyorkOpenTime) {
-          Print("1st");
           drawAsianSession();
           drawLondonSession();
           drawNewYorkSession();
      }
      else if (TimeCurrent() > londonOpenTime) {
-          Print("2nd");
           drawAsianSession();
           drawLondonSession();
           newyorkOpenTime -= 86400;
@@ -37,7 +36,6 @@ void drawSessions() {
           drawNewYorkSession();
      }
      else if (TimeCurrent() > asianOpenTime) {
-          Print("3rd");
           drawAsianSession();
           londonCloseTime -= 86400;
           londonOpenTime -= 86400;
@@ -47,11 +45,9 @@ void drawSessions() {
           drawNewYorkSession();
      }
      else {
-     Print("4th");
+     
           asianOpenTime -= 86400;
           asianCloseTime -= 86400;
-          Print(asianOpenTime, " ", asianCloseTime);
-          
           drawAsianSession();
           londonCloseTime -= 86400;
           londonOpenTime -= 86400;
@@ -60,4 +56,26 @@ void drawSessions() {
           newyorkCloseTime -= 86400;
           drawNewYorkSession();
      }
+}
+
+void drawSessions() {
+   if (TimeCurrent() > newyorkOpenTime) {
+      Print("1st");
+      drawAsianSession();
+      drawLondonSession();
+      drawNewYorkSession();
+   }
+   else if (TimeCurrent() > londonOpenTime) {
+      Print("2nd");
+      drawAsianSession();
+      drawLondonSession();
+   }
+   else if (TimeCurrent() > asianOpenTime) {
+      Print("3rd");
+      drawAsianSession();
+  
+   }
+   else {
+      Print("4th");
+   }
 }

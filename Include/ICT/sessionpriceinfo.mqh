@@ -95,6 +95,8 @@ void drawLondonSession() {
      
      int londonHighPrice = ArrayMaximum(londonHighPrices, 0);
      int londonLowPrice = ArrayMinimum(londonLowPrices, 0);
+
+     Print(londonHighPrice);
      
      londonHigh = londonPriceArray[londonHighPrice].high;
      londonLow = londonPriceArray[londonLowPrice].low;
