@@ -12,6 +12,7 @@
 #include "../Include/ICT/sessionpriceinfo.mqh"
 #include "../Include/ICT/ictkillzones.mqh"
 #include "../Include/ICT/ictjudasswing.mqh"
+#include "../Include/ICT/monthlypriceinfo.mqh"
 
 #property indicator_chart_window
 #property indicator_buffers 1
@@ -32,6 +33,11 @@ void OnTick(void) {
           drawSessionsRegular();
           // drawSessions();
      }
+     
+     if (drawMonthlyData) {
+         drawMonthlyValues();
+     }
+     
      judasSwing();
 }
 //     
