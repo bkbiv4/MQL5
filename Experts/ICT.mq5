@@ -25,12 +25,12 @@
      
 void OnTick(void) {
      drawDailyValues();
-     //drawWeeklyValues();
+     drawWeeklyValues();
      setSessionTimes();
      
      if (drawSessionBoxes) {
-          //drawSessionsRegular();
-          drawSessions();
+          drawSessionsRegular();
+          // drawSessions();
      }
      judasSwing();
 }

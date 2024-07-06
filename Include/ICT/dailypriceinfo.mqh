@@ -37,7 +37,7 @@ void drawDailyValues(void) {
       double dailyOpenPrice = dailyPriceArray[0].open;
       double dailyHighPrice = dailyPriceArray[0].high;
       double dailyLowPrice = dailyPriceArray[0].low;
-      dailyOpenTime = dailyPriceArray[1].time;
+      dailyOpenTime = dailyPriceArray[0].time;
 
       ObjectCreate(0, "dailyOpen", OBJ_VLINE, 0, dailyOpenTime, 0);
       ObjectSetInteger(0, "dailyOpen",OBJPROP_COLOR, clrPurple);
