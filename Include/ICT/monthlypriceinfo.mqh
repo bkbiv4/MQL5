@@ -6,8 +6,10 @@
 #property copyright "Copyright 2024, MetaQuotes Ltd."
 #property link      "https://www.mql5.com"
 
+#include "currentpriceinfo.mqh"
 
 input bool drawMonthlyData = true;
+string monthlyDirection;
 
 
 MqlRates monthlyPriceArray[];
@@ -23,14 +25,32 @@ void drawMonthlyValues() {
       monthlyOpenTime = monthlyPriceArray[0].time;
       
       ObjectCreate(0, "monthlyOpen", OBJ_VLINE, 0, monthlyOpenTime, 0);
-      ObjectSetInteger(0, "monthlyOpen",OBJPROP_COLOR, clrPurple);
+      ObjectSetInteger(0, "monthlyOpen",OBJPROP_COLOR, clrOrange);
+      ObjectSetInteger(0, "monthlyOpen", OBJPROP_TIMEFRAMES, OBJ_PERIOD_H4 | OBJ_PERIOD_D1 | OBJ_PERIOD_W1);
+      
       
       ObjectCreate(0, "monthlyOpenPrice", OBJ_TREND, 0, monthlyOpenTime, monthlyOpenPrice, monthlyOpenTime + 2592000, monthlyOpenPrice);
+      ObjectSetInteger(0, "monthlyOpenPrice",OBJPROP_COLOR, clrOrange);
+      ObjectSetInteger(0, "monthlyOpenPrice",OBJPROP_STYLE, STYLE_DASH);
+      ObjectSetInteger(0, "monthlyOpenPrice", OBJPROP_TIMEFRAMES, OBJ_PERIOD_H4 | OBJ_PERIOD_D1 | OBJ_PERIOD_W1);
       
-      ObjectCreate(0, "monthlyOpenPriceText", OBJ_TEXT, 0, monthlyOpenTime + 86400, monthlyOpenPrice);
-      ObjectSetString(0, "monthlyOpenPriceText", OBJPROP_TEXT, "Daily Open");
+      ObjectCreate(0, "monthlyOpenPriceText", OBJ_TEXT, 0, monthlyOpenTime + 2592000, monthlyOpenPrice);
+      ObjectSetInteger(0, "monthlyOpenPriceText",OBJPROP_COLOR, clrOrange);
+      ObjectSetString(0, "monthlyOpenPriceText", OBJPROP_TEXT, "Monthly Open");
       ObjectSetString(0, "monthlyOpenPriceText", OBJPROP_FONT, "Arial");
       ObjectSetInteger(0, "monthlyOpenPriceText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
       ObjectSetInteger(0, "monthlyOpenPriceText", OBJPROP_FONTSIZE, 8);
+      ObjectSetInteger(0, "monthlyOpenPriceText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_H4 | OBJ_PERIOD_D1 | OBJ_PERIOD_W1);
+      
+      
+      getCurrentPriceValues();
+      
+      if (currentPrice > monthlyOpenPrice) {
+         monthlyDirection = "MONTHLY DIRECTION - BUY";
+      }
+      
+      else if (currentPrice < monthlyOpenPrice) {
+         monthlyDirection = "MONTHLY DIRECTION - SELL";
+      }
 
 }

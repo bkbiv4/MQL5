@@ -23,6 +23,7 @@ void judasSwing() {
     judasOpenTime = dailyOpenTime + 25200;
     ObjectCreate(0,"judasOpenTime", OBJ_VLINE, 0, judasOpenTime, 0.0);
     ObjectSetInteger(0, "judasOpenTime", OBJPROP_COLOR, clrAzure);
+    ObjectSetInteger(0, "judasOpenTime", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 
     for(ulong i = 0; i < hourlyPriceArray.Size(); i++) {
         if (hourlyPriceArray[i].time == judasOpenTime) {
@@ -32,4 +33,5 @@ void judasSwing() {
 
     ObjectCreate(0, "judasOpenPrice", OBJ_TREND, 0, judasOpenTime, judasSwingOpen, judasOpenTime + 61200, judasSwingOpen);
     ObjectSetInteger(0, "judasOpenPrice", OBJPROP_COLOR, clrAzure);
+    ObjectSetInteger(0, "judasOpenPrice", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 }

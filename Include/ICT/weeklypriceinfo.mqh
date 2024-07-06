@@ -27,7 +27,11 @@
 // #import
 //+------------------------------------------------------------------+
 
+#include "currentpriceinfo.mqh"
+
 MqlRates weeklyPriceArray[];
+
+string weeklyDirection;
 
 void drawWeeklyValues(void) {
 	ArraySetAsSeries(weeklyPriceArray, true);
@@ -38,10 +42,13 @@ void drawWeeklyValues(void) {
      datetime weeklyOpenTime = weeklyPriceArray[0].time;
      
 	ObjectCreate(0, "weeklyOpen", OBJ_TREND, 0, weeklyPriceArray[0].time + 86400, weeklyOpenPrice, weeklyPriceArray[0].time + 518400, weeklyOpenPrice);
-	ObjectSetInteger(0, "weeklyOpen",OBJPROP_COLOR, clrPurple);
+	ObjectSetInteger(0, "weeklyOpen",OBJPROP_COLOR, clrMediumSpringGreen);
 
 	ObjectCreate(0, "weeklyLow", OBJ_TREND, 0, weeklyPriceArray[0].time + 86400, weeklyLowPrice, weeklyPriceArray[0].time + 518400, weeklyLowPrice);
+	ObjectSetInteger(0, "weeklyLow",OBJPROP_COLOR, clrMediumSpringGreen);
+	
 	ObjectCreate(0, "weeklyHigh", OBJ_TREND, 0, weeklyPriceArray[0].time + 86400, weeklyHighPrice, weeklyPriceArray[0].time + 518400, weeklyHighPrice);
+	ObjectSetInteger(0, "weeklyHigh",OBJPROP_COLOR, clrMediumSpringGreen);
      
 	ObjectCreate(0, "weeklyOpenText", OBJ_TEXT, 0, weeklyPriceArray[0].time + 518400, weeklyOpenPrice);
      ObjectSetString(0, "weeklyOpenText", OBJPROP_TEXT, "Weekly Open");
@@ -63,4 +70,23 @@ void drawWeeklyValues(void) {
 
 	
      ObjectCreate(0, "weeklyOpenLine", OBJ_VLINE, 0, weeklyOpenTime + 86400, 0);
+     ObjectSetInteger(0, "weeklyOpenLine",OBJPROP_COLOR, clrMediumSpringGreen);
+     
+     
+     ObjectCreate(0, "weeklyOpenLineText", OBJ_TEXT, 0, weeklyOpenTime, 1.32);
+     ObjectSetString(0, "weeklyOpenLineText", OBJPROP_TEXT, "Weekly Open");
+     ObjectSetString(0, "weeklyOpenLineText", OBJPROP_FONT, "Arial");
+     ObjectSetInteger(0, "weeklyOpenLineText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
+     ObjectSetInteger(0, "weeklyOpenLineText", OBJPROP_FONTSIZE, 8);
+     
+     
+     getCurrentPriceValues();
+      
+      if (currentPrice > weeklyOpenPrice) {
+         weeklyDirection = "WEEKLY DIRECTION - BUY";
+      }
+      
+      else if (currentPrice < weeklyOpenPrice) {
+         weeklyDirection = "WEEKLY DIRECTION - SELL";
+      }
 }

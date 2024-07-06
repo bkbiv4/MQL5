@@ -13,6 +13,8 @@
 #include "../Include/ICT/ictkillzones.mqh"
 #include "../Include/ICT/ictjudasswing.mqh"
 #include "../Include/ICT/monthlypriceinfo.mqh"
+#include "../Include/ICT/currentpriceinfo.mqh"
+
 
 #property indicator_chart_window
 #property indicator_buffers 1
@@ -39,8 +41,10 @@ void OnTick(void) {
      }
      
      judasSwing();
+     
+     Comment(monthlyDirection, "\n", weeklyDirection, "\n", dailyDirection);
 }
-//     
+
 void drawSessionsRegular() {
      if (TimeCurrent() > newyorkOpenTime) {
           drawAsianSession();

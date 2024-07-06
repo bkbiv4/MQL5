@@ -27,8 +27,12 @@
 // #import
 //+------------------------------------------------------------------+
 
+#include "currentpriceinfo.mqh"
+
 MqlRates dailyPriceArray[];
 datetime dailyOpenTime;
+
+string dailyDirection;
 
 
 void drawDailyValues(void) {
@@ -63,4 +67,14 @@ void drawDailyValues(void) {
       ObjectSetString(0, "dailyOpenPriceText", OBJPROP_FONT, "Arial");
       ObjectSetInteger(0, "dailyOpenPriceText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
       ObjectSetInteger(0, "dailyOpenPriceText", OBJPROP_FONTSIZE, 8);
+      
+      getCurrentPriceValues();
+      
+      if (currentPrice > dailyOpenPrice) {
+         dailyDirection = "DAILY DIRECTION - BUY";
+      }
+      
+      else if (currentPrice < dailyOpenPrice) {
+         dailyDirection = "DAILY DIRECTION - SELL";
+      }
   }
