@@ -33,6 +33,8 @@ MqlRates weeklyPriceArray[];
 
 string weeklyDirection;
 
+long yD;
+
 void drawWeeklyValues(void) {
 	ArraySetAsSeries(weeklyPriceArray, true);
      int weeklyData = CopyRates(_Symbol,PERIOD_W1, 0, 16, weeklyPriceArray);
@@ -81,6 +83,8 @@ void drawWeeklyValues(void) {
      
      
      getCurrentPriceValues();
+     
+      yD = ObjectGetInteger(0, "weeklyOpenLine", OBJPROP_YOFFSET);
       
       if (currentPrice > weeklyOpenPrice) {
          weeklyDirection = "WEEKLY DIRECTION - BUY";

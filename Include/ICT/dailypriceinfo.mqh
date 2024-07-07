@@ -45,28 +45,37 @@ void drawDailyValues(void) {
 
       ObjectCreate(0, "dailyOpen", OBJ_VLINE, 0, dailyOpenTime, 0);
       ObjectSetInteger(0, "dailyOpen",OBJPROP_COLOR, clrPurple);
+      ObjectSetInteger(0, "dailyOpen", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
    
       ObjectCreate(0, "dailyHigh", OBJ_TREND, 0, dailyOpenTime, dailyHighPrice, dailyOpenTime + 86400, dailyHighPrice);
+      ObjectSetInteger(0, "dailyHigh", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
+      
       ObjectCreate(0, "dailyLow", OBJ_TREND, 0, dailyOpenTime, dailyLowPrice, dailyOpenTime + 86400, dailyLowPrice);
-      ObjectCreate(0, "dailyOpenPrice", OBJ_TREND, 0, dailyOpenTime, dailyOpenPrice, dailyOpenTime + 86400, dailyOpenPrice);   
+      ObjectSetInteger(0, "dailyLow", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
+      
+      ObjectCreate(0, "dailyOpenPrice", OBJ_TREND, 0, dailyOpenTime, dailyOpenPrice, dailyOpenTime + 86400, dailyOpenPrice);
+      ObjectSetInteger(0, "dailyOpenPrice", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 
       ObjectCreate(0, "dailyHighText", OBJ_TEXT, 0, dailyOpenTime + 86400, dailyHighPrice);
       ObjectSetString(0, "dailyHighText", OBJPROP_TEXT, "Daily High");
       ObjectSetString(0, "dailyHighText", OBJPROP_FONT, "Arial");
       ObjectSetInteger(0, "dailyHighText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
       ObjectSetInteger(0, "dailyHighText", OBJPROP_FONTSIZE, 8);
+      ObjectSetInteger(0, "dailyHighText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 
       ObjectCreate(0, "dailyLowText", OBJ_TEXT, 0, dailyOpenTime + 86400, dailyLowPrice);
       ObjectSetString(0, "dailyLowText", OBJPROP_TEXT, "Daily Low");
       ObjectSetString(0, "dailyLowText", OBJPROP_FONT, "Arial");
       ObjectSetInteger(0, "dailyLowText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
       ObjectSetInteger(0, "dailyLowText", OBJPROP_FONTSIZE, 8);
+      ObjectSetInteger(0, "dailyLowText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 
       ObjectCreate(0, "dailyOpenPriceText", OBJ_TEXT, 0, dailyOpenTime + 86400, dailyOpenPrice);
       ObjectSetString(0, "dailyOpenPriceText", OBJPROP_TEXT, "Daily Open");
       ObjectSetString(0, "dailyOpenPriceText", OBJPROP_FONT, "Arial");
       ObjectSetInteger(0, "dailyOpenPriceText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
       ObjectSetInteger(0, "dailyOpenPriceText", OBJPROP_FONTSIZE, 8);
+      ObjectSetInteger(0, "dailyOpenPriceText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
       
       getCurrentPriceValues();
       
