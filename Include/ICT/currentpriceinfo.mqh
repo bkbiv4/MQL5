@@ -13,9 +13,9 @@ double currentPrice;
 //datetime dailyOpenTime;
 
 void getCurrentPriceValues() {
-   ArraySetAsSeries(minutePriceArray, true);
-   int minuteData = CopyRates(_Symbol,PERIOD_M1, 0, 48, minutePriceArray);
+	ArraySetAsSeries(minutePriceArray, true);
+	int minuteData = CopyRates(_Symbol,PERIOD_M1, 0, 48, minutePriceArray);
 
-   currentPrice = minutePriceArray[0].open;
+	currentPrice = minutePriceArray[0].open;
 
 }

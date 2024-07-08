@@ -1,6 +1,6 @@
 {
     "C_Cpp.default.forcedInclude": [
-        "c:\\Users\\beuza\\.vscode\\extensions\\l-i-v.mql-tools-2.1.0\\data\\mql5_en.mqh"
+        "c:\\Users\\dynab\\.vscode\\extensions\\l-i-v.mql-tools-2.1.0\\data\\mql5_en.mqh"
     ],
     "C_Cpp.default.includePath": [
         "c:\\Users\\dynab\\AppData\\Roaming\\MetaQuotes\\Terminal\\D0E8209F77C8CF37AD8BF550E51FF075\\MQL5\\Include\\Include",

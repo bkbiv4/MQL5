@@ -12,8 +12,11 @@
 #include "hourlypriceinfo.mqh"
 #include "dailypriceinfo.mqh"
 
+
+input bool drawJudasSwing = true;
 double judasSwingOpen;
 datetime judasOpenTime;
+
 
 void judasSwing() {
 

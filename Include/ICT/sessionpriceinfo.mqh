@@ -37,9 +37,9 @@ MqlRates asianPriceArray[], newyorkPriceArray[], londonPriceArray[];
 
 
 void setSessionTimes() {
-     //asianOpenTime = dailyOpenTime + 10800;
+     asianOpenTime = dailyOpenTime + 10800;
      asianCloseTime = asianOpenTime + 32400;
-     asianCloseTime = asianOpenTime + 14400;
+     //asianCloseTime = asianOpenTime + 14400;
      londonOpenTime = dailyOpenTime + 36000;
      londonCloseTime = londonOpenTime + 32400;
      newyorkOpenTime = dailyOpenTime + 54000;

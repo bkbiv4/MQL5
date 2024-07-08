@@ -45,34 +45,41 @@ void drawWeeklyValues(void) {
      
 	ObjectCreate(0, "weeklyOpen", OBJ_TREND, 0, weeklyPriceArray[0].time + 86400, weeklyOpenPrice, weeklyPriceArray[0].time + 518400, weeklyOpenPrice);
 	ObjectSetInteger(0, "weeklyOpen",OBJPROP_COLOR, clrMediumSpringGreen);
+	ObjectSetInteger(0, "weeklyOpen", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_H1 | OBJ_PERIOD_H4 | OBJ_PERIOD_D1);
 
 	ObjectCreate(0, "weeklyLow", OBJ_TREND, 0, weeklyPriceArray[0].time + 86400, weeklyLowPrice, weeklyPriceArray[0].time + 518400, weeklyLowPrice);
 	ObjectSetInteger(0, "weeklyLow",OBJPROP_COLOR, clrMediumSpringGreen);
+	ObjectSetInteger(0, "weeklyLow", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_H1 | OBJ_PERIOD_H4 | OBJ_PERIOD_D1);
 	
 	ObjectCreate(0, "weeklyHigh", OBJ_TREND, 0, weeklyPriceArray[0].time + 86400, weeklyHighPrice, weeklyPriceArray[0].time + 518400, weeklyHighPrice);
 	ObjectSetInteger(0, "weeklyHigh",OBJPROP_COLOR, clrMediumSpringGreen);
+	ObjectSetInteger(0, "weeklyHigh", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_H1 | OBJ_PERIOD_H4 | OBJ_PERIOD_D1);
      
 	ObjectCreate(0, "weeklyOpenText", OBJ_TEXT, 0, weeklyPriceArray[0].time + 518400, weeklyOpenPrice);
      ObjectSetString(0, "weeklyOpenText", OBJPROP_TEXT, "Weekly Open");
      ObjectSetString(0, "weeklyOpenText", OBJPROP_FONT, "Arial");
      ObjectSetInteger(0, "weeklyOpenText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
      ObjectSetInteger(0, "weeklyOpenText", OBJPROP_FONTSIZE, 8);
+     ObjectSetInteger(0, "weeklyOpenText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_H1 | OBJ_PERIOD_H4 | OBJ_PERIOD_D1);
 
 	ObjectCreate(0, "weeklyLowText", OBJ_TEXT, 0, weeklyPriceArray[0].time + 518400, weeklyLowPrice);
      ObjectSetString(0, "weeklyLowText", OBJPROP_TEXT, "Weekly Low");
      ObjectSetString(0, "weeklyLowText", OBJPROP_FONT, "Arial");
      ObjectSetInteger(0, "weeklyLowText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
      ObjectSetInteger(0, "weeklyLowText", OBJPROP_FONTSIZE, 8);
+     ObjectSetInteger(0, "weeklyLowText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_H1 | OBJ_PERIOD_H4 | OBJ_PERIOD_D1);
 
 	ObjectCreate(0, "weeklyHighText", OBJ_TEXT, 0, weeklyPriceArray[0].time + 518400, weeklyHighPrice);
      ObjectSetString(0, "weeklyHighText", OBJPROP_TEXT, "Weekly High");
      ObjectSetString(0, "weeklyHighText", OBJPROP_FONT, "Arial");
      ObjectSetInteger(0, "weeklyHighText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
      ObjectSetInteger(0, "weeklyHighText", OBJPROP_FONTSIZE, 8);
+     ObjectSetInteger(0, "weeklyHighText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_H1 | OBJ_PERIOD_H4 | OBJ_PERIOD_D1);
 
 	
      ObjectCreate(0, "weeklyOpenLine", OBJ_VLINE, 0, weeklyOpenTime + 86400, 0);
      ObjectSetInteger(0, "weeklyOpenLine",OBJPROP_COLOR, clrMediumSpringGreen);
+     ObjectSetInteger(0, "weeklyOpenLine", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_H1 | OBJ_PERIOD_H4 | OBJ_PERIOD_D1);
      
      
      ObjectCreate(0, "weeklyOpenLineText", OBJ_TEXT, 0, weeklyOpenTime, 1.32);
@@ -80,6 +87,7 @@ void drawWeeklyValues(void) {
      ObjectSetString(0, "weeklyOpenLineText", OBJPROP_FONT, "Arial");
      ObjectSetInteger(0, "weeklyOpenLineText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
      ObjectSetInteger(0, "weeklyOpenLineText", OBJPROP_FONTSIZE, 8);
+     ObjectSetInteger(0, "weeklyOpenLineText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_H1 | OBJ_PERIOD_H4 | OBJ_PERIOD_D1);
      
      
      getCurrentPriceValues();

@@ -42,7 +42,10 @@ void OnTick(void) {
          drawMonthlyValues();
      }
      
-     judasSwing();
+     if (drawJudasSwing) {
+          judasSwing();     
+     }
+     
      
      Comment(monthlyDirection, "\n", weeklyDirection, "\n", dailyDirection);
 }
