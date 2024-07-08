@@ -79,13 +79,15 @@ void drawAsianSession() {
 
      ObjectCreate(0, "asianOpenPrice", OBJ_TREND, 0, asianOpenTime, asianOpenPrice, asianCloseTime, asianOpenPrice);
      ObjectSetInteger(0, "asianOpenPrice",OBJPROP_COLOR, C'177,0,177');
-     ObjectSetInteger(0, "asianOpenPrice", OBJPROP_STYLE, STYLE_DASH);
+     ObjectSetInteger(0, "", OBJPROP_STYLE, STYLE_DASH);
+     ObjectSetInteger(0, "asianOpenPrice", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
      
      ObjectCreate(0, "asianBox", OBJ_RECTANGLE, 0, asianOpenTime, asianPriceArray[asianLowPrice].low, asianCloseTime, asianPriceArray[asianHighPrice].high);
      ObjectSetInteger(0, "asianBox",OBJPROP_BACK, true);
      ObjectSetInteger(0, "asianBox",OBJPROP_COLOR, C'177,0,177');
      ObjectSetInteger(0, "asianBox",OBJPROP_FILL, false);
      ObjectSetInteger(0, "asianBox", OBJPROP_STYLE, STYLE_DASH);
+     ObjectSetInteger(0, "asianBox", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 
      ObjectCreate(0, "asianSessionText", OBJ_TEXT, 0, asianOpenTime, asianHigh);
      ObjectSetString(0, "asianSessionText", OBJPROP_TEXT, "Asian Session");
@@ -93,6 +95,7 @@ void drawAsianSession() {
      ObjectSetInteger(0, "asianSessionText", OBJPROP_ANCHOR, ANCHOR_LEFT_LOWER);
      ObjectSetInteger(0, "asianSessionText", OBJPROP_FONTSIZE, 8);
      ObjectSetInteger(0, "asianSessionText",OBJPROP_COLOR, C'177,0,177');
+     ObjectSetInteger(0, "asianSessionText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 }
 
 void drawLondonSession() {
@@ -127,12 +130,14 @@ void drawLondonSession() {
      ObjectCreate(0, "londonOpenPrice", OBJ_TREND, 0, londonOpenTime, londonOpenPrice, londonCloseTime, londonOpenPrice);
      ObjectSetInteger(0, "londonOpenPrice",OBJPROP_COLOR,  C'105,105,255');
      ObjectSetInteger(0, "londonOpenPrice", OBJPROP_STYLE, STYLE_DASH);
+     ObjectSetInteger(0, "londonOpenPrice", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
      
      ObjectCreate(0, "londonBox", OBJ_RECTANGLE, 0, londonOpenTime, londonPriceArray[londonLowPrice].low, londonCloseTime, londonPriceArray[londonHighPrice].high);
      ObjectSetInteger(0, "londonBox",OBJPROP_BACK, true);   
      ObjectSetInteger(0, "londonBox",OBJPROP_COLOR, C'105,105,255');
      ObjectSetInteger(0, "londonBox",OBJPROP_FILL, false);
      ObjectSetInteger(0, "londonBox", OBJPROP_STYLE, STYLE_DASH);
+     ObjectSetInteger(0, "londonBox", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 
      ObjectCreate(0, "londonSessionText", OBJ_TEXT, 0, londonOpenTime, londonHigh);
      ObjectSetString(0, "londonSessionText", OBJPROP_TEXT, "London Session");
@@ -140,6 +145,7 @@ void drawLondonSession() {
      ObjectSetInteger(0, "londonSessionText", OBJPROP_ANCHOR, ANCHOR_LEFT_LOWER);
      ObjectSetInteger(0, "londonSessionText", OBJPROP_FONTSIZE, 8);
      ObjectSetInteger(0, "londonSessionText",OBJPROP_COLOR, C'105,105,255');
+     ObjectSetInteger(0, "londonSessionText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 }
 
 void drawNewYorkSession() {
@@ -174,12 +180,14 @@ void drawNewYorkSession() {
      ObjectCreate(0, "newyorkOpenPrice", OBJ_TREND, 0, newyorkOpenTime, newyorkOpenPrice, newyorkCloseTime, newyorkOpenPrice);
      ObjectSetInteger(0, "newyorkOpenPrice",OBJPROP_COLOR, clrSpringGreen);
      ObjectSetInteger(0, "newyorkOpenPrice", OBJPROP_STYLE, STYLE_DASH);
+     ObjectSetInteger(0, "newyorkOpenPrice", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
      
      ObjectCreate(0, "newyorkBox", OBJ_RECTANGLE, 0, newyorkOpenTime, newyorkPriceArray[newyorkLowPrice].low, newyorkCloseTime, newyorkPriceArray[newyorkHighPrice].high);
      ObjectSetInteger(0, "newyorkBox",OBJPROP_BACK, true);
      ObjectSetInteger(0, "newyorkBox",OBJPROP_COLOR, clrSpringGreen);
      ObjectSetInteger(0, "newyorkBox",OBJPROP_FILL, false);
      ObjectSetInteger(0, "newyorkBox", OBJPROP_STYLE, STYLE_DASH);
+     ObjectSetInteger(0, "newyorkBox", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 
      ObjectCreate(0, "newyorkSessionText", OBJ_TEXT, 0, newyorkOpenTime, newyorkHigh);
      ObjectSetString(0, "newyorkSessionText", OBJPROP_TEXT, "New York Session");
@@ -187,4 +195,5 @@ void drawNewYorkSession() {
      ObjectSetInteger(0, "newyorkSessionText", OBJPROP_ANCHOR, ANCHOR_LEFT_LOWER);
      ObjectSetInteger(0, "newyorkSessionText", OBJPROP_FONTSIZE, 8);
      ObjectSetInteger(0, "newyorkSessionText",OBJPROP_COLOR, clrSpringGreen);
+     ObjectSetInteger(0, "newyorkSessionText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 }
