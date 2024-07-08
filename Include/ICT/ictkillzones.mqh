@@ -20,41 +20,60 @@ void ictKillzones() {
 
     datetime ictNewYorkOpenTime = newyorkOpenTime - 3600;
     datetime ictNewYorkCloseTime = ictNewYorkOpenTime + 7200;
-    
-    double ictNewYorkOpenPrice = 0.0;
-    for(ulong i = 0; i < hourlyPriceArray.Size(); i++) { 
-        if(hourlyPriceArray[i].time == ictNewYorkOpenTime) {
-            ictNewYorkOpenPrice = hourlyPriceArray[i].high;
-        }
-    }
-    
     datetime ictLondonCloseTime = londonCloseTime;
     datetime ictLondonCloseOpenTime = ictLondonCloseTime - 7200;
-    
-    double ictLondonClosePrice = 0.0;
-    for(ulong i = 0; i < hourlyPriceArray.Size(); i++) { 
-        if(hourlyPriceArray[i].time == ictLondonCloseOpenTime) {
-            ictLondonClosePrice = hourlyPriceArray[i].high;
-        }
-    }
 
-    ObjectCreate(0, "ictLondonCloseOpenTimeText", OBJ_TEXT, 0, (ictLondonCloseOpenTime + ictLondonCloseTime)/2, ictLondonClosePrice + 0.0015, ictLondonCloseTime, ictLondonClosePrice + 0.0015);
-    ObjectSetString(0, "ictLondonCloseOpenTimeText", OBJPROP_TEXT, "London Open");
-    ObjectSetInteger(0, "ictLondonCloseOpenTimeText",OBJPROP_COLOR, clrDodgerBlue);
-    ObjectSetInteger(0, "ictLondonCloseOpenTimeText",OBJPROP_FONTSIZE, 10);
-    ObjectSetInteger(0, "ictLondonCloseOpenTimeText", OBJPROP_ANCHOR, ANCHOR_CENTER);
+      ObjectCreate(0, "ictLondonCloseOpenLine", OBJ_VLINE, 0, ictLondonCloseOpenTime, 0);
+      ObjectSetInteger(0, "ictLondonCloseOpenLine", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30);
+      ObjectSetInteger(0, "ictLondonCloseOpenLine",OBJPROP_COLOR, clrHotPink);
+      ObjectSetInteger(0, "ictLondonCloseOpenLine", OBJPROP_STYLE, STYLE_DASH);
+      
+      ObjectCreate(0, "ictLondonCloseCloseLine", OBJ_VLINE, 0, ictLondonCloseTime, 0);
+      ObjectSetInteger(0, "ictLondonCloseCloseLine", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30);
+      ObjectSetInteger(0, "ictLondonCloseCloseLine",OBJPROP_COLOR, clrHotPink);
+      ObjectSetInteger(0, "ictLondonCloseCloseLine", OBJPROP_STYLE, STYLE_DASH);
+      
+      
 
-    ObjectCreate(0, "ictLondonCloseOpenBox", OBJ_RECTANGLE, 0, ictLondonCloseOpenTime, ictLondonClosePrice + 0.0015 + 0.0002, ictLondonCloseTime, ictLondonClosePrice + 0.0015 - 0.0002);
-    ObjectCreate(0, "ictLondonCloseOpenBoxLeft", OBJ_TREND, 0, ictLondonCloseOpenTime, ictLondonClosePrice + 0.0015 + 0.0001, ictLondonCloseOpenTime, ictLondonClosePrice + 0.0015 - 0.0005);
-    ObjectCreate(0, "ictLondonCloseOpenBoxRight", OBJ_TREND, 0, ictLondonCloseTime, ictLondonClosePrice + 0.0015 + 0.0001, ictLondonCloseTime, ictLondonClosePrice + 0.0015 - 0.0005);
+      ObjectCreate(0, "ictNewyorkOpenLine", OBJ_VLINE, 0, ictNewYorkOpenTime, 0);
+      ObjectSetInteger(0, "ictNewyorkOpenLine", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30);
+      ObjectSetInteger(0, "ictNewyorkOpenLine",OBJPROP_COLOR, clrHotPink);
+      ObjectSetInteger(0, "ictNewyorkOpenLine", OBJPROP_STYLE, STYLE_DASH);
+      
+      ObjectCreate(0, "ictNewyorkCloseLine", OBJ_VLINE, 0, ictNewYorkCloseTime, 0);
+      ObjectSetInteger(0, "ictNewyorkCloseLine", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30);
+      ObjectSetInteger(0, "ictNewyorkCloseLine",OBJPROP_COLOR, clrHotPink);
+      ObjectSetInteger(0, "ictNewyorkCloseLine", OBJPROP_STYLE, STYLE_DASH);
+      
+      int newyorkX;
+      int newyorkY;
+      
+      ChartTimePriceToXY(0, 0, ictNewYorkOpenTime, 0, newyorkX, newyorkY);
+     
+      ObjectCreate(0, "ictNewYorkLabel", OBJ_LABEL, 0, 0, 0);
+      ObjectSetString(0, "ictNewYorkLabel",OBJPROP_TEXT, "NY OPEN");
+      ObjectSetInteger(0, "ictNewYorkLabel", OBJPROP_XDISTANCE, newyorkX);
+      ObjectSetInteger(0, "ictNewYorkLabel", OBJPROP_COLOR, clrHotPink);
+      ObjectSetInteger(0, "ictNewYorkLabel", OBJPROP_YDISTANCE, 5);
+      ObjectSetInteger(0, "ictNewYorkLabel", OBJPROP_FONTSIZE, 16);
+      ObjectSetInteger(0, "ictNewYorkLabel", OBJPROP_CORNER, CORNER_LEFT_LOWER);
+      ObjectSetInteger(0, "ictNewYorkLabel", OBJPROP_ANCHOR, ANCHOR_LEFT_LOWER);
+      ObjectSetInteger(0, "ictNewYorkLabel", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30);
+      
+      int londonX;
+      int londonY;
+      
+      ChartTimePriceToXY(0, 0, ictLondonCloseOpenTime, 0, londonX, londonY);
+     
+      ObjectCreate(0, "ictLondonLabel", OBJ_LABEL, 0, 0, 0);
+      ObjectSetString(0, "ictLondonLabel",OBJPROP_TEXT, "LN OPEN");
+      ObjectSetInteger(0, "ictLondonLabel", OBJPROP_XDISTANCE, londonX);
+      ObjectSetInteger(0, "ictLondonLabel", OBJPROP_COLOR, clrHotPink);
+      ObjectSetInteger(0, "ictLondonLabel", OBJPROP_YDISTANCE, 5);
+      ObjectSetInteger(0, "ictLondonLabel", OBJPROP_FONTSIZE, 16);
+      ObjectSetInteger(0, "ictLondonLabel", OBJPROP_CORNER, CORNER_LEFT_LOWER);
+      ObjectSetInteger(0, "ictLondonLabel", OBJPROP_ANCHOR, ANCHOR_LEFT_LOWER);
+      ObjectSetInteger(0, "ictLondonLabel", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30);
+      
 
-    ObjectCreate(0, "ictNewyorkOpenText", OBJ_TEXT, 0, (ictNewYorkOpenTime + ictNewYorkCloseTime)/2, ictNewYorkOpenPrice + 0.0015, ictNewYorkCloseTime, ictNewYorkOpenPrice + 0.0015);
-    ObjectSetString(0, "ictNewyorkOpenText", OBJPROP_TEXT, "New York Open");
-    ObjectSetInteger(0, "ictNewyorkOpenText",OBJPROP_COLOR, clrDodgerBlue);
-    ObjectSetInteger(0, "ictNewyorkOpenText",OBJPROP_FONTSIZE, 10);
-    ObjectSetInteger(0, "ictNewyorkOpenText", OBJPROP_ANCHOR, ANCHOR_CENTER);
-
-    ObjectCreate(0, "ictNewyorkOpenBox", OBJ_RECTANGLE, 0, ictNewYorkOpenTime, ictNewYorkOpenPrice + 0.0015 + 0.0002, ictNewYorkCloseTime, ictNewYorkOpenPrice + 0.0015 - 0.0002);
-    ObjectCreate(0, "ictNewyorkOpenBoxLeft", OBJ_TREND, 0, ictNewYorkOpenTime, ictNewYorkOpenPrice + 0.0015 + 0.0001, ictNewYorkOpenTime, ictNewYorkOpenPrice + 0.0015 - 0.0005);
-    ObjectCreate(0, "ictNewyorkOpenBoxRight", OBJ_TREND, 0, ictNewYorkCloseTime, ictNewYorkOpenPrice + 0.0015 + 0.0001, ictNewYorkCloseTime, ictNewYorkOpenPrice + 0.0015 - 0.0005);
 }

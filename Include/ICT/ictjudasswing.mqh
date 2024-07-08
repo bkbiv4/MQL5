@@ -27,6 +27,21 @@ void judasSwing() {
     ObjectCreate(0,"judasOpenTime", OBJ_VLINE, 0, judasOpenTime, 0.0);
     ObjectSetInteger(0, "judasOpenTime", OBJPROP_COLOR, clrAzure);
     ObjectSetInteger(0, "judasOpenTime", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
+    ObjectSetInteger(0, "judasOpenTime", OBJPROP_STYLE, STYLE_DASH);
+    
+    int pricex, pricey;
+      
+   ChartTimePriceToXY(0, 0, judasOpenTime, 0, pricex, pricey);
+   
+   ObjectCreate(0, "midnightOpenLabel", OBJ_LABEL, 0, 0, 0);
+   ObjectSetString(0, "midnightOpenLabel",OBJPROP_TEXT, "12AM OPEN");
+   ObjectSetInteger(0, "midnightOpenLabel", OBJPROP_XDISTANCE, pricex);
+   ObjectSetInteger(0, "midnightOpenLabel", OBJPROP_COLOR, clrAzure);
+   ObjectSetInteger(0, "midnightOpenLabel", OBJPROP_YDISTANCE, 5);
+   ObjectSetInteger(0, "midnightOpenLabel", OBJPROP_FONTSIZE, 12);
+   ObjectSetInteger(0, "midnightOpenLabel", OBJPROP_CORNER, CORNER_LEFT_LOWER);
+   ObjectSetInteger(0, "midnightOpenLabel", OBJPROP_ANCHOR, ANCHOR_LEFT_UPPER);
+   ObjectSetDouble(0, "midnightOpenLabel", OBJPROP_ANGLE, 90.0);
 
     for(ulong i = 0; i < hourlyPriceArray.Size(); i++) {
         if (hourlyPriceArray[i].time == judasOpenTime) {
