@@ -31,7 +31,15 @@ void judasSwing() {
         }
     }
 
-    ObjectCreate(0, "judasOpenPrice", OBJ_TREND, 0, judasOpenTime, judasSwingOpen, judasOpenTime + 61200, judasSwingOpen);
+    ObjectCreate(0, "judasOpenPrice", OBJ_TREND, 0, judasOpenTime, judasSwingOpen, judasOpenTime + 39600, judasSwingOpen);
     ObjectSetInteger(0, "judasOpenPrice", OBJPROP_COLOR, clrAzure);
     ObjectSetInteger(0, "judasOpenPrice", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
+    
+     ObjectCreate(0, "judasSwingText", OBJ_TEXT, 0, judasOpenTime + 39600, judasSwingOpen);
+     ObjectSetString(0, "judasSwingText", OBJPROP_TEXT, "JS");
+     ObjectSetInteger(0, "judasSwingText", OBJPROP_COLOR, clrAzure);
+     ObjectSetString(0, "judasSwingText", OBJPROP_FONT, "Arial");
+     ObjectSetInteger(0, "judasSwingText", OBJPROP_ANCHOR, ANCHOR_RIGHT_LOWER);
+     ObjectSetInteger(0, "judasSwingText", OBJPROP_FONTSIZE, 8);
+     ObjectSetInteger(0, "judasSwingText", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30 | OBJ_PERIOD_H1);
 }

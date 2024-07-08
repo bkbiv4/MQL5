@@ -35,7 +35,7 @@ datetime dailyOpenTime;
 string dailyDirection;
 
 
-void drawDailyValues(void) {
+void drawDailyValues() {
       ArraySetAsSeries(dailyPriceArray, true);
       int dailyData = CopyRates(_Symbol, PERIOD_D1, 0, 28, dailyPriceArray);
       double dailyOpenPrice = dailyPriceArray[0].open;

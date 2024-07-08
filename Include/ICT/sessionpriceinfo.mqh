@@ -7,6 +7,7 @@
 #property copyright "Copyright 2024, MetaQuotes Ltd."
 #property link      "https://www.mql5.com"
 #include "dailypriceinfo.mqh"
+#include "hourlypriceinfo.mqh"
 
 input bool drawSessionBoxes = true;
 //+------------------------------------------------------------------+
@@ -36,8 +37,9 @@ MqlRates asianPriceArray[], newyorkPriceArray[], londonPriceArray[];
 
 
 void setSessionTimes() {
-     asianOpenTime = dailyOpenTime + 10800;
+     //asianOpenTime = dailyOpenTime + 10800;
      asianCloseTime = asianOpenTime + 32400;
+     asianCloseTime = asianOpenTime + 14400;
      londonOpenTime = dailyOpenTime + 36000;
      londonCloseTime = londonOpenTime + 32400;
      newyorkOpenTime = dailyOpenTime + 54000;

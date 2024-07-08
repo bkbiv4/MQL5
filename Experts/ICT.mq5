@@ -10,6 +10,7 @@
 #include "../Include/ICT/dailypriceinfo.mqh"
 #include "../Include/ICT/weeklypriceinfo.mqh"
 #include "../Include/ICT/sessionpriceinfo.mqh"
+#include "../Include/ICT/hourlypriceinfo.mqh"
 #include "../Include/ICT/ictkillzones.mqh"
 #include "../Include/ICT/ictjudasswing.mqh"
 #include "../Include/ICT/monthlypriceinfo.mqh"
@@ -28,12 +29,13 @@
      
 void OnTick(void) {
      drawDailyValues();
-     drawWeeklyValues();
      setSessionTimes();
+     drawWeeklyValues();
+     
      
      if (drawSessionBoxes) {
-          drawSessionsRegular();
-          // drawSessions();
+          //drawSessionsRegular();
+          drawSessions();
      }
      
      if (drawMonthlyData) {
