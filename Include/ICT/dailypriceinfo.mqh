@@ -61,6 +61,7 @@ void drawDailyValues() {
       ObjectSetInteger(0, "dailyOpenLabel", OBJPROP_CORNER, CORNER_LEFT_LOWER);
       ObjectSetInteger(0, "dailyOpenLabel", OBJPROP_ANCHOR, ANCHOR_LEFT_UPPER);
       ObjectSetDouble(0, "dailyOpenLabel", OBJPROP_ANGLE, 90.0);
+      ObjectSetInteger(0, "dailyOpenLabel", OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_M30);
       
       
    

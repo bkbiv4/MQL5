@@ -25,6 +25,9 @@
 //   string ErrorDescription(int error_code);
 // #import
 //+------------------------------------------------------------------+
+
+string movingAverageDirection;
+
 void drawICTMovingAverages() {
 
      
@@ -37,11 +40,28 @@ void drawICTMovingAverages() {
    int movingAverage2 = iMA(_Symbol, _Period, 20, 0, MODE_EMA, PRICE_CLOSE);
    
    //sort the price arrays 1, 2 from current candle
-   //ArraySetAsSeries(myMovingAverageArray1,true);
+   
+   
+   
+   ArraySetAsSeries(myMovingAverageArray1,true);
+   ArraySetAsSeries(myMovingAverageArray2,true);
+   
+   CopyBuffer(movingAverage1, 0, 0, 30, myMovingAverageArray1);
+   CopyBuffer(movingAverage2, 0, 0, 30, myMovingAverageArray2);
    
    ChartIndicatorAdd(0, 0, movingAverage1);
    ChartIndicatorAdd(0, 0, movingAverage2);
    
-   //ArraySetAsSeries(myMovingAverageArray2,true);
+   if ((myMovingAverageArray1[0] > myMovingAverageArray2[0]) && (myMovingAverageArray1[1] > myMovingAverageArray2[1])) {
+     movingAverageDirection = "BUY";
+   }
+   else if ((myMovingAverageArray1[0] < myMovingAverageArray2[0]) && (myMovingAverageArray1[1] < myMovingAverageArray2[1])) {
+     movingAverageDirection = "SELL";
+   }
+   else {
+     movingAverageDirection = "CONSOLIDATION"; 
+   }
+   
+   
    
 }

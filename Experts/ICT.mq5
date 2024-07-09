@@ -36,10 +36,11 @@ void OnTick(void) {
           judasSwing();     
      }
      
-     ictKillzones();
+     if (drawICTKillzones) {
+          ictKillzones();
+     }
      
-     
-     Comment(monthlyDirection, "\n", weeklyDirection, "\n", dailyDirection);
+     Comment(monthlyDirection, "\n", weeklyDirection, "\n", dailyDirection, "\n", movingAverageDirection);
 }
 
 void drawSessionsRegular() {
