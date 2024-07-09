@@ -15,13 +15,12 @@
 #include "../Include/ICT/ictjudasswing.mqh"
 #include "../Include/ICT/monthlypriceinfo.mqh"
 #include "../Include/ICT/currentpriceinfo.mqh"
-#include "../Include/ICT/ictmovingaverages.mqh"
-
+     
 void OnTick(void) {
      drawDailyValues();
      setSessionTimes();
      drawWeeklyValues();
-     drawICTMovingAverages();
+     
      
      if (drawSessionBoxes) {
           //drawSessionsRegular();
@@ -32,15 +31,9 @@ void OnTick(void) {
          drawMonthlyValues();
      }
      
-     if (drawJudasSwing) {
-          judasSwing();     
-     }
+     judasSwing();
      
-     if (drawICTKillzones) {
-          ictKillzones();
-     }
-     
-     Comment(monthlyDirection, "\n", weeklyDirection, "\n", dailyDirection, "\n", movingAverageDirection);
+     Comment(monthlyDirection, "\n", weeklyDirection, "\n", dailyDirection);
 }
 
 void drawSessionsRegular() {
@@ -80,25 +73,25 @@ void drawSessionsRegular() {
 }
 
 void drawSessions() {
-   if (TimeCurrent() > newyorkOpenTime) {
-     //  Print("1st");
-      drawAsianSession();
-      drawLondonSession();
-      drawNewYorkSession();
-   }
-   else if (TimeCurrent() > londonOpenTime) {
-     //  Print("2nd");
-      drawAsianSession();
-      drawLondonSession();
-   }
-   else if (TimeCurrent() > asianOpenTime) {
-     //  Print("3rd");
-      drawAsianSession();
-  
-   }
-   else {
+     if (TimeCurrent() > newyorkOpenTime) {
+          //  Print("1st");
+          drawAsianSession();
+          drawLondonSession();
+          drawNewYorkSession();
+     }
+     else if (TimeCurrent() > londonOpenTime) {
+          //  Print("2nd");
+          drawAsianSession();
+          drawLondonSession();
+     }
+     else if (TimeCurrent() > asianOpenTime) {
+          //  Print("3rd");
+          drawAsianSession();
+
+     }
+     else {
      //  Print("4th");
-   }
+     }
 }
 
 
